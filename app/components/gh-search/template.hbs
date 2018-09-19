@@ -1,0 +1,17 @@
+<UiSearch
+  class={{controlClass}}
+  @minCharacters="3"
+  @searchOnFocus={{false}}
+  @maxResult="5"
+  @searchDelay="500"
+  @apiSettings={{apiSettings}}
+  @onSelect={{onSelect}}
+>
+  <i class="search icon"></i>
+  <input
+    class="prompt"
+    autofocus="autofocus"
+    placeholder={{placeholder}}
+  >
+  <div data-test-search-results class="results"></div>
+</UiSearch>

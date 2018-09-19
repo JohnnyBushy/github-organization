@@ -1,0 +1,48 @@
+<div class="right floated middle aligned content">
+  <div class="ui small label">
+    {{#if (is-pending repository.branches)}}
+      <i class="spinner loading icon"></i>
+    {{else}}
+      {{repository.branches.length}}
+    {{/if}}
+    <span class="detail">
+      <i class="code branch icon"></i>
+    </span>
+  </div>
+
+  {{#if repository.language}}
+    <span class="ui small blue label">
+      {{repository.language}}
+    </span>
+  {{/if}}
+
+  <div class="ui small green label">
+    {{#if repository.private}}
+      <i class="lock icon"></i> Private
+    {{else}}
+      <i class="globe icon"></i> Public
+    {{/if}}
+  </div>
+</div>
+
+<i class={{concat (if isExpanded "down" "right") " triangle icon"}}></i>
+
+<div class="content">
+  <div class="header">
+    <a href={{repository.htmlUrl}} target="_blank" rel="noopener">{{repository.name}}</a>
+  </div>
+  <div class="description">
+    {{repository.description}}
+  </div>
+  <div class="extra">
+
+  </div>
+
+  {{#if isExpanded}}
+    {{#if (is-pending repository.branches)}}
+      <div class="ui tiny active inline loader"></div>
+    {{else}}
+      {{gh-branch-list branches=repository.branches}}
+    {{/if}}
+  {{/if}}
+</div>

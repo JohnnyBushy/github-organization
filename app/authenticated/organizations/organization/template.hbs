@@ -1,0 +1,24 @@
+<div class="ui grid">
+  <div class="sixteen wide column">
+    <h2 class="ui header">
+      <img data-test-organization-image src={{organization.avatarUrl}} alt="Avatar">
+      <div class="content">
+        <span data-test-organization-name>{{organization.name}}</span>
+        <div class="sub header">
+          <a
+            data-test-organization-link
+            href={{organization.htmlUrl}}
+            target="_blank"
+            rel="noopener"
+          >
+            {{organization.htmlUrl}}
+          </a>
+        </div>
+      </div>
+    </h2>
+  </div>
+
+  <div class="sixteen wide column">
+    {{outlet}}
+  </div>
+</div>

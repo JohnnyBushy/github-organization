@@ -1,0 +1,65 @@
+<div class="ui middle aligned grid">
+  <div class="sixteen wide mobile four wide tablet four wide computer column">
+    <h5 class="ui header">Public repositories ({{organization.publicRepos}})</h5>
+  </div>
+  <div
+    class="right floated sixteen wide mobile six wide tablet four wide computer column"
+  >
+    <UiDropdown
+      class="fluid small selection"
+      @forceSelection={{false}}
+      @selected={{language}}
+      @onChange={{action "selectLanguage"}}
+    >
+      {{#if language}}
+        <i {{action (mut language) null}}
+          class="ui remove icon"
+          role="button"
+        />
+      {{/if}}
+      <i class="dropdown icon"></i>
+      <div class="default text">Filter by language</div>
+
+      <div class="menu">
+        {{#each githubLanguages.LIST as |language|}}
+          <div
+            data-value={{language}}
+            class="item"
+          >
+            {{language}}
+          </div>
+        {{/each}}
+      </div>
+    </UiDropdown>
+  </div>
+</div>
+
+<div class="ui divider"></div>
+
+<div class="ui selection list">
+  {{#each repositoriesOnPage as |repository|}}
+    <GhRepository data-test-organization-repository @repository={{repository}} />
+  {{/each}}
+</div>
+
+{{#if isPaginationEnabled}}
+  <div>
+    {{#if hasNext}}
+      <button {{action "nextPage"}}
+        class="ui small right floated right labeled icon button"
+      >
+        <i class="right arrow icon"></i>
+        Next
+      </button>
+    {{/if}}
+
+    {{#if hasPrevious}}
+      <button {{action "previousPage"}}
+        class="ui small left floated left labeled icon button"
+      >
+        <i class="left arrow icon"></i>
+        Previous
+      </button>
+    {{/if}}
+  </div>
+{{/if}}

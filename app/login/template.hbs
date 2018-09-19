@@ -1,0 +1,40 @@
+<div class="ui container middle aligned center aligned grid">
+  <div class="ten wide mobile six wide computer column">
+    <h2 class="ui image header">
+      <img class="image" src="/assets/img/github-logo.png" alt="GitHub">
+      <div class="content">
+        GitHub Explorer
+      </div>
+    </h2>
+    <form class="ui large form">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            {{input
+              data-test-login-input
+              placeholder="Enter your access token"
+              value=accessToken
+              oninput=(action (mut accessToken) value="target.value")
+            }}
+          </div>
+        </div>
+        <button
+          data-test-login-submit
+          class="ui fluid large submit button" {{action "login"}}
+        >
+          Sign in
+        </button>
+      </div>
+    </form>
+    {{#if authenticationError}}
+      <div data-test-login-error class="ui error message">{{authenticationError}}</div>
+    {{/if}}
+    <div class="ui message">
+      Don't have an access token?
+      <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">
+        Generate it
+      </a>
+    </div>
+  </div>
+</div>

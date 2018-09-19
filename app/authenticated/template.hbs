@@ -1,0 +1,36 @@
+<div class="ui container menu">
+  <div class="header item">
+    <h3>GitHub Explorer</h3>
+  </div>
+  <div class="item">
+    <GhSearch
+      data-test-search-input
+      @controlClass="ui transparent icon input"
+      @onSelect={{action "selectOrganization"}}
+      @placeholder="Find an organization..."
+    />
+  </div>
+  <div class="right menu">
+    <div class="item">
+      <img
+        data-test-user-image
+        class="ui avatar image"
+        src={{model.userAvatarUrl}}
+        alt="Avatar"
+      >
+      <span data-test-user-name>{{model.userName}}</span>
+    </div>
+
+    <div {{action "logout"}}
+      class="item link"
+      role="button"
+      data-test-logout-link
+    >
+      Sign out
+    </div>
+  </div>
+</div>
+
+<div class="ui container">
+  {{outlet}}
+</div>
